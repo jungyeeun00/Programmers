@@ -1,16 +1,13 @@
-import java.util.*;
 class Solution {
-    public boolean solution(int x) {
-        List<Integer> list = new ArrayList<>();
-        
+    public boolean solution(int x) {        
         int res = x;
+        int sum = 0;
+        
         while(res>0){
-            list.add(res%10);
+            sum+=res%10;
             res/=10;
         }
-        
-        int sum = list.stream().mapToInt(Integer::intValue).sum();
-        
+                
         return x%sum==0;
     }
 }
