@@ -4,24 +4,25 @@ class Solution {
         Queue<Integer> queue = new LinkedList<>();
 
         List<Integer> list = new ArrayList<>();
-        int idx = 0;
-        int cnt = 0;
-        for (int progress : progresses) {
-            queue.add(progress);
-        }
-        while (!queue.isEmpty()) {
-            while (queue.peek()+speeds[idx]*cnt<100){
-                cnt++;
+
+        for (int i = 0; i < progresses.length; i++) {
+            double remain = (double)(100 - progresses[i]) / speeds[i];
+            int date = (int) Math.ceil(remain);
+
+            if (!queue.isEmpty() && queue.peek() < date) {
+                list.add(queue.size());
+                queue.clear();
             }
-            int answer = 0;
-            while (queue.peek()+speeds[idx]*cnt>=100){
-                queue.poll();
-                answer++;
-                idx++;
-                if (queue.isEmpty()) break;
-            }
-            list.add(answer);
+
+            queue.add(date);
         }
-        return list.stream().mapToInt(Integer::intValue).toArray();
+
+        list.add(queue.size());
+
+        int[] answer = new int[list.size()];
+        for (int i = 0; i < answer.length; i++) {
+            answer[i] = list.get(i);
+        }
+        return answer;
     }
 }
