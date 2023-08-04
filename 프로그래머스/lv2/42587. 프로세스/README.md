@@ -1,10 +1,10 @@
 # [level 2] 프로세스 - 42587 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/42587#qna) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/42587) 
 
 ### 성능 요약
 
-메모리: 72.7 MB, 시간: 0.48 ms
+메모리: 73.1 MB, 시간: 0.58 ms
 
 ### 구분
 
