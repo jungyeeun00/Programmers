@@ -1,34 +1,35 @@
 import java.util.*;
 
 public class Main {
-    static int []fibo = new int[41];
-    static int recCnt=0;
-    static int dpCnt=0;
-    public static void main(String[] args) {
+    static int[] f = new int[41];
+    static int fibCnt = 0;
+    static int fibonacciCnt = 0;
+
+    public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
 
-        int N = sc.nextInt();
-        fiboRecursion(N);
-        fiboDP(N);
-        System.out.println(recCnt+" "+dpCnt);
+        int n = sc.nextInt();
 
+        fib(n);
+        fibonacci(n);
+        System.out.println(fibCnt+" "+fibonacciCnt);
     }
 
-    static int fiboRecursion(int n){
-        if(n==1||n==2) {
-            recCnt++;
+    static int fib(int n){
+        if (n==1 || n==2) {
+            fibCnt++;
             return 1;
         }
-        else return fiboRecursion(n-1)+fiboRecursion(n-2);
+        else return fib(n-1)+fib(n-2);
     }
 
-    static int fiboDP(int n){
-        fibo[0]=1;
-        fibo[1]=1;
+    static int fibonacci(int n){
+        f[0] = f[1] = 1;
         for (int i=2;i<n;i++){
-            dpCnt++;
-            fibo[i] = fibo[i - 1] + fibo[i - 2];
+            fibonacciCnt++;
+            f[i] = f[i - 1] + f[i - 2];
         }
-        return fibo[n];
+        return f[n];
     }
+
 }
