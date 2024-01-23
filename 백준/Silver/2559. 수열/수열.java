@@ -9,21 +9,16 @@ public class Main {
         int K = sc.nextInt();
 
         int[] sum = new int[N];
-        int[] answer = new int[N - K + 1];
-
         sum[0] = sc.nextInt();
         for (int i = 1; i < N; i++) {
             sum[i] = sum[i - 1] + sc.nextInt();
         }
 
-        answer[0] = sum[K - 1];
-        for (int i = 1; i < N - K + 1; i++) {
+        int[] answer = new int[N - K + 1];
+        int max = answer[0] = sum[K - 1];
+        for (int i = 1; i < answer.length; i++) {
             answer[i] = sum[i + K - 1] - sum[i - 1];
-        }
-
-        int max = answer[0];
-        for (int i = 1; i < N - K + 1; i++) {
-            max = Math.max(max, answer[i]);
+            max = Math.max(answer[i], max);
         }
 
         System.out.println(max);
