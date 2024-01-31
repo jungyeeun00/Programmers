@@ -6,24 +6,25 @@ public class Main {
 
         int N = sc.nextInt();
         int M = sc.nextInt();
-
+        long[] remain = new long[M];
         long[] sum = new long[N + 1];
-        long[] remainArr = new long[M];
         long count = 0;
 
         for (int i = 1; i <= N; i++) {
-            sum[i] = (sum[i - 1] + sc.nextInt()) % M;
-            remainArr[(int) sum[i]]++;
-            if (sum[i] == 0) count++;
+            sum[i] = sum[i - 1] + sc.nextInt();
+            if ((int)(sum[i] % M) == 0) {
+                count++;
+            }
+            remain[(int) (sum[i] % M)]++;
         }
 
         for (int i = 0; i < M; i++) {
-            if (remainArr[i] > 1) {
-                count += remainArr[i] * (remainArr[i] - 1) / 2;
-            }
+            if(remain[i]>=2)
+                count += remain[i] * (remain[i] - 1) / 2;
         }
 
         System.out.println(count);
+
 
     }
 }
