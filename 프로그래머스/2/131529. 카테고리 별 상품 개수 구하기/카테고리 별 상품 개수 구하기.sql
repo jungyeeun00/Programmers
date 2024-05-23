@@ -1,0 +1,4 @@
+-- 코드를 입력하세요
+SELECT lEFT(PRODUCT_CODE,2) as CATEGORY, count(*) PRODUCTS
+from PRODUCT
+group by CATEGORY
