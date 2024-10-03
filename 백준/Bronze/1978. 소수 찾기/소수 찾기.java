@@ -9,28 +9,26 @@ public class Main {
 
         int N = Integer.parseInt(br.readLine());
         StringTokenizer st = new StringTokenizer(br.readLine());
-        int[] arr = new int[N];
+
+        boolean[] prime = new boolean[1001];    //소수는  false
+
+        prime[0] = true;
+        prime[1] = true;
+
+        for (int i = 2; i <= Math.sqrt(1000); i++) {
+            if (!prime[i]) {    //prime[i]가 소수라면
+                for (int j = i*i; j <= 1000; j+=i) {  //prime[j]는 소수가 아님
+                    prime[j] = true;
+                }
+            }
+        }
+
         int cnt = 0;
         for (int i = 0; i < N; i++) {
-            arr[i] = Integer.parseInt(st.nextToken());
-            if (isPrime(arr[i])) {
-                cnt++;
-            }
+            int n = Integer.parseInt(st.nextToken());
+            if (!prime[n]) cnt++;
         }
-
 
         System.out.println(cnt);
-
-    }
-
-    static boolean isPrime(int n) {
-        if(n==1) return false;
-
-        for (int i = 2; i <= n/2; i++) {
-            if (n % i == 0) {
-                return false;
-            }
-        }
-        return true;
     }
 }
