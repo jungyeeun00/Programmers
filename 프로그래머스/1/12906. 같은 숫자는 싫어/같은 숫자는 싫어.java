@@ -4,19 +4,21 @@ public class Solution {
     public int[] solution(int []arr) {
         int[] answer = {};
         
-        Stack<Integer> stack = new Stack<>();
-        
+        ArrayList<Integer> list = new ArrayList();
+        int preNum = 10;
         for(int i=0;i<arr.length;i++){
-            if(!stack.isEmpty()&&stack.peek()==arr[i]){
-                stack.pop();
+            if(preNum!=arr[i]){
+                list.add(arr[i]);
             }
-            stack.push(arr[i]);
+            preNum=arr[i];
         }
         
-        answer = new int[stack.size()];
-        for(int i=answer.length-1;i>=0;i--){
-            answer[i]=stack.pop();
+        answer = new int[list.size()];
+        
+        for(int i=0;i<answer.length;i++){
+            answer[i] = list.get(i).intValue();
         }
+
 
         return answer;
     }
