@@ -29,7 +29,7 @@ public class Main {
             graph.get(u).add(v);
             graph.get(v).add(u);    //무방향 그래프이므로 양쪽에 저장
         }
-        for (int i = 0; i <= N; i++) {   //오름차순 탐색
+        for (int i = 1; i <= N; i++) {   //오름차순 탐색
             Collections.sort(graph.get(i));
         }
 
