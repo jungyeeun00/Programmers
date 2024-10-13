@@ -9,17 +9,17 @@ public class Main {
 
         int N = Integer.parseInt(br.readLine());
         StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int[] dp = new int[N];
         int[] arr = new int[N];
         for (int i = 0; i < N; i++) {
             arr[i] = Integer.parseInt(st.nextToken());
         }
-
-        long[] dp = new long[N];
-
         dp[0] = arr[0];
-        long max = dp[0];
+
+        int max = dp[0];
         for (int i = 1; i < N; i++) {
-            dp[i] = Math.max(arr[i], dp[i - 1] + arr[i]);
+            dp[i] = Math.max(dp[i - 1] + arr[i], arr[i]);
             max = Math.max(max, dp[i]);
         }
         System.out.println(max);
