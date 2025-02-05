@@ -12,14 +12,17 @@ public class Main {
         int M = N - 1;
 
         int copyM, sum = 0;
-        while (M > 0) {
-            sum = copyM = M;
+
+        for (int i = 1; i <= M; i++) {
+            sum = copyM = i;
             while (copyM > 0) {
                 sum += (copyM % 10);
                 copyM /= 10;
             }
-            if(sum == N) answer = M;
-            M--;
+            if (sum == N) {
+                answer = i;
+                break;
+            }
         }
 
         System.out.println(answer);
